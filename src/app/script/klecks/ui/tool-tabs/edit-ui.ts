@@ -199,10 +199,7 @@ This has been reported to Google.
                     if (filters[filterKey].isInstant) {
                         button.blur();
                         applyFilter(null);
-                        this.statusOverlay.out(
-                            '"' + filterName + '" ' + LANG('filter-applied'),
-                            true,
-                        );
+                        this.statusOverlay.out(LANG('filter-applied', { x: filterName }), true);
                     } else {
                         const secondaryColorRGB = this.klColorSlider.getSecondaryRGB();
                         let filterDialog: TFilterGetDialogResult<any> | undefined = undefined;

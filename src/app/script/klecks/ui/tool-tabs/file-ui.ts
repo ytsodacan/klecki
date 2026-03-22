@@ -179,6 +179,7 @@ export class FileUi {
             const exportTypeSelect = new KL.Select({
                 optionArr: [
                     ['png', 'PNG'],
+                    ['jpg', 'JPG'],
                     ['psd', 'PSD'],
                     ['layers', LANG('layers') + ' (PNG)'],
                 ],

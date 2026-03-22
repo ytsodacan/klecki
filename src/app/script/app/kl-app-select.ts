@@ -295,8 +295,8 @@ export class KlAppSelect {
         this.easelSelect = new EaselSelect({
             selectMode: this.selectMode,
             onStartSelect: (p, operation) => this.selectTool.startSelect(p, operation),
-            onGoSelect: (p) => {
-                this.selectTool.goSelect(p);
+            onGoSelect: (p, isShiftPressed) => {
+                this.selectTool.goSelect(p, isShiftPressed);
                 this.easelSelect.setRenderedSelection(this.selectTool.getSelection());
             },
             onEndSelect: () => {
@@ -309,8 +309,8 @@ export class KlAppSelect {
             onStartMoveSelect: (p) => {
                 this.selectTool.startMoveSelect(p);
             },
-            onGoMoveSelect: (p) => {
-                this.selectTool.goMoveSelect(p);
+            onGoMoveSelect: (p, isShiftPressed) => {
+                this.selectTool.goMoveSelect(p, isShiftPressed);
                 this.easelSelect.setRenderedSelection(this.selectTool.getSelection());
             },
             onEndMoveSelect: () => {

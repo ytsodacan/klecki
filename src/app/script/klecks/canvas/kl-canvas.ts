@@ -1270,8 +1270,14 @@ export class KlCanvas {
         return this.layers[index];
     }
 
-    getColorAt(x: number, y: number): TRgb {
-        return this.eyedropper.getColorAt(x, y, this.klHistory.getComposed());
+    getColorAt(x: number, y: number): TRgb | undefined {
+        let result: TRgb | undefined;
+        try {
+            result = this.eyedropper.getColorAt(x, y, this.klHistory.getComposed());
+        } catch (_) {
+            // history probably messed up. but the app should stay operational
+        }
+        return result;
     }
 
     getCompleteCanvas(factor: number, maskSelection?: boolean): HTMLCanvasElement {

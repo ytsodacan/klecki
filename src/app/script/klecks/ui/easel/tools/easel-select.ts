@@ -45,10 +45,10 @@ export type TEaselSelectParams = {
     // select
 
     onStartSelect: (p: TVector2D, operation: TBooleanOperation) => void;
-    onGoSelect: (p: TVector2D) => void;
+    onGoSelect: (p: TVector2D, isShiftPressed: boolean) => void;
     onEndSelect: () => void;
     onStartMoveSelect: (p: TVector2D) => void;
-    onGoMoveSelect: (p: TVector2D) => void;
+    onGoMoveSelect: (p: TVector2D, isShiftPressed: boolean) => void;
     onEndMoveSelect: () => void;
     onSelectAddPoly: (path: TVector2D[], operation: TBooleanOperation) => void;
     onResetSelection: () => void;
@@ -67,10 +67,10 @@ export class EaselSelect implements TEaselTool {
     // from params
 
     private readonly onStartSelect: (p: TVector2D, operation: TBooleanOperation) => void;
-    private readonly onGoSelect: (p: TVector2D) => void;
+    private readonly onGoSelect: (p: TVector2D, isShiftPressed: boolean) => void;
     private readonly onEndSelect: () => void;
     private readonly onStartMoveSelect: (p: TVector2D) => void;
-    private readonly onGoMoveSelect: (p: TVector2D) => void;
+    private readonly onGoMoveSelect: (p: TVector2D, isShiftPressed: boolean) => void;
     private readonly onEndMoveSelect: () => void;
     private readonly onSelectAddPoly: (path: TVector2D[], operation: TBooleanOperation) => void;
     private readonly onResetSelection: () => void;
@@ -195,7 +195,7 @@ export class EaselSelect implements TEaselTool {
             }
             if (event.type === 'pointermove' && event.button === 'left') {
                 this.didSelectionMove = true;
-                this.onGoMoveSelect(cursorCanvasPos);
+                    this.onGoMoveSelect(cursorCanvasPos, this.easel.keyListener.isPressed('shift'));
             }
             if (event.type === 'pointerup') {
                 this.onEndMoveSelect();
@@ -258,7 +258,7 @@ export class EaselSelect implements TEaselTool {
                     this.onStartSelect(cursorCanvasPos, this.appliedBooleanOperation!);
                 }
                 if (event.type === 'pointermove' && event.button === 'left' && this.isDragging) {
-                    this.onGoSelect(cursorCanvasPos);
+                    this.onGoSelect(cursorCanvasPos, this.easel.keyListener.isPressed('shift'));
                 }
                 if (event.type === 'pointerup' && wasDragging) {
                     this.onEndSelect();

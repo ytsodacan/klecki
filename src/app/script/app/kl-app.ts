@@ -645,8 +645,11 @@ export class KlApp {
                 eyedropper: new EaselEyedropper({
                     onPick: (p) => {
                         const color = this.klCanvas.getColorAt(p.x, p.y);
-                        brushSettingService.setColor(color);
-                        return color;
+                        if (color) {
+                            brushSettingService.setColor(color);
+                            return color;
+                        }
+                        return brushSettingService.getColor();
                     },
                     onPickEnd: () => {
                         if (
