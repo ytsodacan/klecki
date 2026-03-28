@@ -1,7 +1,7 @@
-🖌️ [Demo](https://kleki.com/) | ❓ [About](https://kleki.com/about/) | 📝 [Dev Blog](https://blog.kleki.com/)
+🖌️ [Try it out](https://kleki.com/) | ❓ [About](https://kleki.com/about/) | 📝 [Dev Blog](https://blog.kleki.com/)
 
 <p style="text-align:center">
-<img src="https://bitbof.com/stuff/2022-01-klecks/2022-03-klecks-github.png" alt="Klecks"><br>
+<img src="https://bitbof.com/stuff/2022-01-klecks/2026-03-28-klecks-github.png" alt="Klecks"><br>
 </p>
 
 Klecks (German for "splash of color", pronounced "clex") is the official open-source release of the community-funded online painting app [Kleki](https://kleki.com).
@@ -16,7 +16,7 @@ Klecks can run in standalone mode (e.g. on [kleki.com](https://kleki.com)), or e
 - Tools: selection, paint bucket, text, shapes, gradient
 - WebGL-powered filters: blur, tilt-shift, curves, distort, noise.
 - Lineart extraction
-- Editing tools: transform, crop/expand, resize, perspective
+- Editing tools: transform, warp, crop/expand, resize, perspective
 - Supports all major form factors: desktop, tablet and phone
 - Multi-language (10+ languages)
 
@@ -107,4 +107,4 @@ Klecks and Kleki are community funded. [Donate today](https://kleki.com/donate/)
 # License
 
 bitbof © 2026 - Released under the MIT License. Icons by bitbof are public domain (excluding the Klecks logo, bitbof logo).
-While Kleki and Klecks are jointly developed, Kleki's license is separate from Klecks. Kleki must be licensed from bitbof.
+While Kleki and Klecks are jointly developed, Kleki's license is separate from Klecks. Kleki at [kleki.com](https://kleki.com) is free to use, but the name and brand "Kleki" are not covered by this license — you may not use Klecks to offer a service branded or presented as "Kleki" without a license from bitbof.
