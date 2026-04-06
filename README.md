@@ -1,12 +1,12 @@
-<div style="text-align:center">
+<div align="center">
  <img src="https://bitbof.com/stuff/2022-01-klecks/2026-04-06-logo.png" alt="Klecks" title="Klecks">
 </div>
 
-<div style="text-align:center">
+<div align="center">
   Modern and feature-rich painting app for the web
 </div>
 
-<div style="text-align:center">
+<div align="center">
   <h3>
     <a href="https://kleki.com">
       Try it out
@@ -26,7 +26,7 @@
   </h3>
 </div>
 
-<p style="text-align:center">
+<p align="center">
 <img src="https://bitbof.com/stuff/2022-01-klecks/2026-03-28-klecks-github.png" alt="Klecks"><br>
 </p>
 
