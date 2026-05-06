@@ -241,9 +241,11 @@ function correctPointerEvent(
 
     pointerObj.lastPageX = correctedObj.pageX;
     pointerObj.lastPageY = correctedObj.pageY;
-    correctedObj.movementX = totalLastX === null ? 0 : pointerObj.lastPageX - totalLastX;
-    correctedObj.movementY = totalLastY === null ? 0 : pointerObj.lastPageY - totalLastY;
-
+    if (coalescedEventArr.length > 0) {
+        // We only need to fix the coalesced case. Applying this on pointerdown would cause problems.
+        correctedObj.movementX = totalLastX === null ? 0 : pointerObj.lastPageX - totalLastX;
+        correctedObj.movementY = totalLastY === null ? 0 : pointerObj.lastPageY - totalLastY;
+    }
     return correctedObj;
 }
 

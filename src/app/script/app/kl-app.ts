@@ -81,6 +81,7 @@ import { requestPersistentStorage } from '../klecks/storage/request-persistent-s
 import { CrossTabChannel } from '../bb/base/cross-tab-channel';
 import { MobileColorUi } from '../klecks/ui/mobile/mobile-color-ui';
 import { getSelectionPath2d } from '../bb/multi-polygon/get-selection-path-2d';
+import { ToolspaceTopRow } from '../klecks/ui/components/toolspace-top-row';
 
 importFilters();
 
@@ -137,6 +138,7 @@ export class KlApp {
     private readonly toolspace: HTMLElement;
     private readonly toolspaceInner: HTMLElement;
     private readonly toolWidth: number = 271;
+    private readonly toolspaceTopRow: ToolspaceTopRow | EmbedToolspaceTopRow;
     private readonly bottomBar: HTMLElement | undefined;
     private readonly layersUi: LayersUi;
     private readonly toolspaceScroller: ToolspaceScroller;
@@ -1134,9 +1136,8 @@ export class KlApp {
             this.mobileUi.getElement(),
         ]);
 
-        let toolspaceTopRow;
         if (this.embed) {
-            toolspaceTopRow = new EmbedToolspaceTopRow({
+            this.toolspaceTopRow = new EmbedToolspaceTopRow({
                 onHelp: () => {
                     showIframeModal(this.embed!.url + '/help.html', !!this.embed);
                 },
@@ -1208,7 +1209,7 @@ export class KlApp {
                 },
             });
         } else {
-            toolspaceTopRow = new KL.ToolspaceTopRow({
+            this.toolspaceTopRow = new KL.ToolspaceTopRow({
                 logoImg: p.logoImg!,
                 onLogo: () => {
                     showIframeModal('./home/', !!this.embed);
@@ -1230,8 +1231,8 @@ export class KlApp {
                 },
             });
         }
-        toolspaceTopRow.getElement().style.marginBottom = '10px';
-        this.toolspaceInner.append(toolspaceTopRow.getElement());
+        this.toolspaceTopRow.getElement().style.marginBottom = '10px';
+        this.toolspaceInner.append(this.toolspaceTopRow.getElement());
 
         this.toolspaceToolRow = new KL.ToolspaceToolRow({
             onActivate: (activeStr) => {
@@ -2296,6 +2297,12 @@ export class KlApp {
             LocalStorage.setItem('uiState', this.uiLayout);
         }
         this.updateUi();
+    }
+
+    setLogo(logoImg: string, isPixelated?: boolean, keepOriginalColors?: boolean): void {
+        if (this.toolspaceTopRow instanceof ToolspaceTopRow) {
+            this.toolspaceTopRow.setLogo(logoImg, isPixelated, keepOriginalColors);
+        }
     }
 
     saveAsPsd(): void {

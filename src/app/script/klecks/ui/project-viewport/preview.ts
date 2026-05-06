@@ -261,7 +261,7 @@ export class Preview {
             chainArr: [pinchZoomer as TChainElement, doubleTapper as TChainElement],
         });
         this.pointerChain.setChainOut((e) => {
-            if (e.button && ['left', 'middle'].includes(e.button)) {
+            if (e.button && ['left', 'middle'].includes(e.button) && e.type === 'pointermove') {
                 this.transformCanvas({
                     type: 'translate',
                     x: e.dX,

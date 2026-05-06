@@ -195,7 +195,7 @@ export class EaselSelect implements TEaselTool {
             }
             if (event.type === 'pointermove' && event.button === 'left') {
                 this.didSelectionMove = true;
-                    this.onGoMoveSelect(cursorCanvasPos, this.easel.keyListener.isPressed('shift'));
+                this.onGoMoveSelect(cursorCanvasPos, this.easel.keyListener.isPressed('shift'));
             }
             if (event.type === 'pointerup') {
                 this.onEndMoveSelect();
@@ -350,7 +350,6 @@ export class EaselSelect implements TEaselTool {
     }
 
     private createFreeTransform(): void {
-        let isFirstCallback = true;
         this.freeTransform = new FreeTransform({
             x: 1,
             y: 1,
@@ -362,10 +361,6 @@ export class EaselSelect implements TEaselTool {
             snapY: [],
             viewportTransform: { scale: 1, x: 0, y: 0, angleDeg: 0 },
             callback: (transform) => {
-                if (isFirstCallback) {
-                    isFirstCallback = false;
-                    return;
-                }
                 if (
                     this.mode === 'select' ||
                     !this.transformation ||

@@ -55,6 +55,7 @@ export class ToolspaceTopRow {
             });
             const im = BB.el({
                 className: p.darkInvert ? 'dark-invert' : undefined,
+                id: 'kl-logo-button-im',
                 css: {
                     backgroundImage: "url('" + p.image + "')",
                     backgroundRepeat: 'no-repeat',
@@ -138,6 +139,15 @@ export class ToolspaceTopRow {
             shareButton ? shareButton.el : undefined,
             helpButton.el,
         ]);
+    }
+
+    setLogo(logoImg: string, isPixelated?: boolean, keepOriginalColors?: boolean): void {
+        const el = document.getElementById('kl-logo-button-im');
+        if (el) {
+            el.style.backgroundImage = "url('" + logoImg + "')";
+            el.style.imageRendering = isPixelated ? 'pixelated' : '';
+            el.classList.toggle('dark-invert', !keepOriginalColors);
+        }
     }
 
     getElement(): HTMLElement {
