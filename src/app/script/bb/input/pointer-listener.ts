@@ -126,6 +126,7 @@ const pointerEnterEvt = (HAS_POINTER_EVENTS ? 'pointerenter' : 'mouseenter') as 
  */
 function correctPointerEvent(
     event: PointerEvent | TExtendedDOMPointerEvent,
+    isPointerDown?: boolean,
 ): TCorrectedPointerEvent {
     if ('corrected' in event) {
         return event.corrected;
@@ -241,8 +242,10 @@ function correctPointerEvent(
 
     pointerObj.lastPageX = correctedObj.pageX;
     pointerObj.lastPageY = correctedObj.pageY;
-    if (coalescedEventArr.length > 0) {
-        // We only need to fix the coalesced case. Applying this on pointerdown would cause problems.
+    if (isPointerDown) {
+        correctedObj.movementX = 0;
+        correctedObj.movementY = 0;
+    } else {
         correctedObj.movementX = totalLastX === null ? 0 : pointerObj.lastPageX - totalLastX;
         correctedObj.movementY = totalLastY === null ? 0 : pointerObj.lastPageY - totalLastY;
     }
@@ -450,7 +453,7 @@ export class PointerListener {
 
             this.onPointerDown = (event: PointerEvent, onSkipGlobal?: boolean) => {
                 //BB.throwOut('pointerdown ' + event.pointerId + ' | ' + dragPointerIdArr.length);
-                const correctedEvent = correctPointerEvent(event);
+                const correctedEvent = correctPointerEvent(event, true);
                 ////console.log('debug: ' + event.pointerId + ' pointerdown');
                 if (
                     this.dragPointerIdArr.includes(correctedEvent.pointerId) ||
