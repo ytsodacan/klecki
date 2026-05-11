@@ -1,5 +1,9 @@
 name: Update Languages
 
+permissions:
+  contents: write
+
+
 on:
   workflow_dispatch:  # allows manual run
 
