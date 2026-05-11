@@ -3,7 +3,7 @@
 </div>
 
 <div align="center">
-  Modern and feature-rich painting app for the web
+  Modern and feature-rich painting app for the web but i changed the styles
 </div>
 
 <div align="center">
