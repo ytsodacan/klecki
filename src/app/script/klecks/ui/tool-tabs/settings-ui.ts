@@ -1,7 +1,7 @@
 import { BB } from '../../../bb/bb';
 import { LANG, LANGUAGE_STRINGS, LS_LANGUAGE_KEY } from '../../../language/language';
 import { KL } from '../../kl';
-import { languages } from '../../../../languages/languages';
+import { languages } from '../../../../../languages/languages';
 import bitbofLogoImg from 'url:/src/app/img/bitbof-logo.svg';
 import klecksLogoImg from 'url:/src/app/img/klecks-logo.png';
 import uiSwapImg from 'url:/src/app/img/ui/ui-swap-lr.svg';
