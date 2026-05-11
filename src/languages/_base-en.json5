@@ -113,7 +113,10 @@ Renaming a key across multiple language files:
     "hint": "google \"pressure sensitivity\". Feature of Wacom tablets, Apple Pencil, XP Pen, etc.",
     "value": "Toggle Pressure Sensitivity"
   },
-
+  "brush-pen": {
+  "hint": "as in pen brush",
+  "value": "Pen"
+  },
   "brush-pen-circle": {
     "hint": "as in circle shape",
     "value": "Circle"
